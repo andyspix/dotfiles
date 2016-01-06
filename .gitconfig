@@ -1,0 +1,43 @@
+[color]
+       ui = auto
+       branch = auto
+       diff = auto
+       status = auto
+
+[color "branch"]
+   current = yellow reverse
+   local = yellow
+   remote = green
+
+[color "diff"]
+   meta = yellow bold
+   frag = magenta bold
+   old = red bold
+   new = green bold
+
+[color "status"]
+   added = yellow
+   changed = green
+   untracked = cyan
+[merge]
+    tool= kdiff3
+  conflicstyle = diff3
+[rerere]
+  enabled = 1
+[alias]
+  st = status
+  co = checkout
+  ci = commit
+  br = branch
+  pl = pull
+  ps = push
+  fuse = merge --no-ff
+
+[init]
+  templatedir = ~/.git_template
+
+[push]
+   default = simple
+[user]
+  name = andyspix
+  email = andyspix@gmail.com
