@@ -8,6 +8,12 @@ rescue  LoadError => err
 end
 
 begin
+  require Rails.application.routes.url_helpers
+rescue  LoadError => err
+  warn "Couldn't include path helpers: #{err}"
+end
+
+begin
   require 'awesome_print'
   AwesomePrint.irb!
 rescue  LoadError => err
