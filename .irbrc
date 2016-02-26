@@ -8,16 +8,16 @@ rescue  LoadError => err
 end
 
 begin
-  require Rails.application.routes.url_helpers
-rescue  LoadError => err
-  warn "Couldn't include path helpers: #{err}"
-end
-
-begin
   require 'awesome_print'
   AwesomePrint.irb!
 rescue  LoadError => err
   warn "Couldn't load awesome_print: #{err}"
+end
+
+begin
+  require 'factory_girl_rails'
+rescue  LoadError => err
+  warn "Couldn't load factory girl: #{err}"
 end
 
 IRB.conf[:PROMPT_MODE] = :SIMPLE
