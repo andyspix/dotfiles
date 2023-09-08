@@ -1,0 +1,29 @@
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
+if [ -f /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash ]; then
+    . /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
+fi
+
+source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
+
+# Ulimit to 1024
+ulimit -n 1024
+
+# Ruby verisioning tools
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+
+# default aliases
+source ~/.profile
+
+# SSH Agent
+source ~/.ssh/ssh-find-agent.sh
+set_ssh_agent_socket
+
+# Set command line to echo current path
+echo 'set ps1'
+PS1='\[`[ $? = 0 ] && X=2 || X=1; tput setaf $X`\]\h\[`tput sgr0`\]:$PWD\[\e[1;93m\]$(__git_ps1) \[\e[00m\]$ '
+
+chruby 3.2.2

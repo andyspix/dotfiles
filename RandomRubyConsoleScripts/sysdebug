@@ -1,0 +1,10 @@
+ f1 = File.open('/tmp/syslog.7')
+ a = f1.readlines
+ a.map { |x| x.gsub(/Aug .. ..:..:.. /, '').gsub(/\[\d+\]/, '') }.tally
+
+ f2 = File.open('/tmp/syslog.1')
+ b = f2.readlines
+ b.map { |x| x.gsub(/Aug .. ..:..:.. /, '').gsub(/\[\d+\]/, '') }.tally
+
+
+

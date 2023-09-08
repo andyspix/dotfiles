@@ -1,0 +1,22 @@
+--- !ruby/object:ApiKey
+concise_attributes:
+- !ruby/object:ActiveModel::Attribute::FromDatabase
+  name: id
+  value_before_type_cast: 66
+- !ruby/object:ActiveModel::Attribute::FromDatabase
+  name: api_key
+  value_before_type_cast: 8a433fd56f29a890351125932b26e65d26fe65b988c8cc77c4f3c84a97a930cf
+- !ruby/object:ActiveModel::Attribute::FromDatabase
+  name: key_name
+  value_before_type_cast: 14b7d6125817d824de6e5efcd44da0f6
+- !ruby/object:ActiveModel::Attribute::FromDatabase
+  name: account_id
+  value_before_type_cast: 1093
+- !ruby/object:ActiveModel::Attribute::FromDatabase
+  name: created_at
+  value_before_type_cast: 2021-04-30 12:27:34.000000000 Z
+- !ruby/object:ActiveModel::Attribute::FromDatabase
+  name: updated_at
+  value_before_type_cast: 2021-04-30 12:27:34.000000000 Z
+new_record: false
+active_record_yaml_version: 2

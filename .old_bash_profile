@@ -1,0 +1,6 @@
+# export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+# export BASH_CONF="bash_profile"
+
+# Bundler configuration
+# export GEM_HOME=/Users/andyspix/.gem
+# export PATH="$GEM_HOME/bin:$PATH"

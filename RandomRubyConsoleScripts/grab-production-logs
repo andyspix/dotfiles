@@ -1,0 +1,2 @@
+aws ec2 describe-instances | grep Value | grep web- | grep production | awk '{print  "mkdir /tmp/" $2 "_logfiles/"}' | sed 's/"//g'
+aws ec2 describe-instances | grep Value | grep web- | grep production | awk '{print $2 " /tmp/" $2 "_logfiles/"}' | sed 's/"/scp /' | sed 's/"/:\/var\/www\/lola\/current\/log\/production.log.*/' | sed 's/"//g'

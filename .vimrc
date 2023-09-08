@@ -10,13 +10,16 @@ set expandtab
 set tabstop=2 
 set shiftwidth=2 
 set scrolloff=10
-set showbreak=...\ 
+set showbreak= 
 set history=5000
 set wmw=0
+set t_BE=
 nmap <silent> <Left> :tabprev<CR>
 nmap <silent> <Right> :tabnext<CR>
 nmap <silent> <A-Left> :tabprev<CR>
 nmap <silent> <A-Right> :tabnext<CR>
+
+set whichwrap+=<,>,h,l,[,]
 
 if has('gui_running')
   set smarttab
@@ -53,29 +56,8 @@ command! SmallerFont call SmallerFont()
 
 colorscheme distinguished
 
-function! InitializeGitTab()
-  :cd ~/Git_Repository/
-  :tabe . 
-  :tabfirst
-  :quit
-  :RepoTab
-  :RepoTab
-endfunction
-command! InitGitTab call InitializeGitTab()
-
-function! RepoTab()
-  :cd ~/Git_Repository/
-  :tabe . 
-endfunction
-command! RepoTab call RepoTab()
-
 set backupdir=~/vim_backups,.
 set directory=~/vim_backups,.
-
-function! CWD()
-  :cd %:p:h
-endfunction
-command! Cwd call CWD()
 
 let &t_SI .= "\<Esc>[?2004h"
 let &t_EI .= "\<Esc>[?2004l"
@@ -124,3 +106,26 @@ if has("autocmd")
     \   exe "normal! g`\"" |
     \ endif
 endif
+
+" Using ALE now
+let g:ale_sign_error = "⚠"
+let g:ale_linters = {'perl': ['perlcritic', 'perl'], 'ruby': ['rubocop']}
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_filetype_changed = 0
+let g:ale_lint_on_insert_leave = 0
+
+"Remove trailing whitspace from typical programming language files
+autocmd BufWritePre *.rb %s/\s\+$//e
+autocmd BufWritePre *.py %s/\s\+$//e
+" autocmd BufWritePre *.js %s/\s\+$//e
+autocmd BufWritePre *.pl %s/\s\+$//e
+autocmd BufWritePre *.pm %s/\s\+$//e
+autocmd BufWritePre *.haml %s/\s\+$//e
+autocmd BufWritePre *.erb %s/\s\+$//e
+
+" Load plugins and setup helptags
+packloadall
+silent! helptags ALL
+

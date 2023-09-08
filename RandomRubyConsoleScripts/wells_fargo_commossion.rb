@@ -1,0 +1,1 @@
+[['DeviceName', 'DeviceCreatedAt', 'CommissionIssuedAt', 'IssuedTo', 'Amount', 'PwsCostAtTime', 'PriceMrcDataAtTime', 'SettlementDate']] + CommissionHistory.where(rate_plan_id: [2265, 2521]).joins(:device).pluck('devices.device_name', 'DATE(devices.created_at)', :created_at, :issued_to, :amount, :pws_cost_at_time, :price_mrc_data_at_time, :settlement_date)

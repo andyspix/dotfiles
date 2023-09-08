@@ -1,0 +1,5 @@
+time = Time.now - 1200.minutes
+res = 1200.times.map do
+  time += 1.minute
+  [time, RazorMessage.where(created_at: (time..(time + 1.minute))).group(:message_type).count]
+end; 0

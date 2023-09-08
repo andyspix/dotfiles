@@ -1,0 +1,94 @@
+# General STUFF
+- Setup multiple desktops using Mission Control
+- Create a new Apple ID using PWS email
+
+# Copy over dotfiles and configs of note:
+cd $HOME
+cp -fr OLD_MACHINE_HOME/.ssh .
+cp -fr OLD_MACHINE_HOME/.vim .
+cp -fr OLD_MACHINE_HOME/.vimrc .
+cp -fr OLD_MACHINE_HOME/.irbrc .
+cp -fr OLD_MACHINE_HOME/.irbhistory .
+cp -fr OLD_MACHINE_HOME/.profile .
+cp -fr OLD_MACHINE_HOME/.bash_profile .
+cp -fr OLD_MACHINE_HOME/.bashrc .
+cp -fr OLD_MACHINE_HOME/.gitconfig .
+cp -fr OLD_MACHINE_HOME/.aws .
+cp -fr OLD_MACHINE_HOME/.rubocop.yml .
+cp -fr OLD_MACHINE_HOME/my.cnf .
+cp -fr OLD_MACHINE_HOME/ansible.cfg .
+cp -fr OLD_MACHINE_HOME/ansible.vault_pass.txt .
+cp -fr OLD_MACHINE_HOME/.config/nvim .config/
+
+cp -fr OLD_MACHINE_HOME/RandomRubyConsoleScripts .
+cp -fr OLD_MACHINE_HOME/KeepMisc .
+cp -fr OLD_MACHINE_HOME/DevOpsStuff .
+
+# Update from Bash to zsh
+This is mostly migration of profile, bash_profile, and bashrc to zprofile, zshrc, and zshenv
+Setting the Prompt (PS1) can be an annoyance.  Depending on preference may want Vi mode or Emacs Mode
+Definitely enable the good autocompletion with 'autoload -Uz compinit && compinit' in .zshrc
+
+# App Store apps:
+Slack
+1Password
+Safari
+Chrome
+XCode Developer Tools
+Bitwarden (and extension for Chrome & Firefox)
+1Password (and extension for Chrome & Firefox - set AutoLock timeout to 300 minutes)
+
+# Iterm2, make sure to disable mouse reporting, focus follows mouse, and copy/paste to buffers
+https://iterm2.com/index.html
+
+# Other Installations:
+# Homebrew
+xcode-select --install
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+# Agree to XCode License
+sudo xcodebuild -license
+agree
+
+# Homebrew installations
+# NeoVim, Mysql, Chruby, Ruby-install, Node
+brew install neovim
+brew install chruby ruby-install
+ruby-install ruby
+brew install node
+brew install zsh-vi-mode
+
+# Install Teleport Community edition is fine for clients
+https://goteleport.com/docs/installation/
+
+# Mysql Config:
+# NOTE: we're using 5.7 compatible Aurora. 5.7 mysql on Mac has a limitation of 1024 tables in cache, ever
+# This means parallel testing with more than 4 threads is very likely to sporadically crash the MySQL requiring
+# a restart.  (Set table_open_cache sizes and max_connections lower to help, but yeah, you're borked).  Using
+# MySQL8 removes the problem, and is _probably_ okay, but may hit compatibility slight deltas with 5.7 or loading
+# of mysql dumps...
+# 5.7
+brew install mysql@5.7
+echo 'export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"' >> ~/.zshrc
+brew services start mysql@5.7
+mysql_secure_installation
+
+# Mysql 8
+brew services stop mysql@5.7
+brew install mysql
+brew services start mysql
+mysql_secure_installation
+
+# Git
+mkdir ~/GitRepository
+git clone git@github.com:PremierWireless/lola.git
+git clone git@github.com:PremierWireless/Machine_configuration.git
+git clone git@github.com:PremierWireless/cloudformation-common.git
+git clone git@github.com:PremierWireless/PWS_application.git
+
+# Lola/Rails Stuff
+cd ~/GitRepository/lola
+bundle install
+cp -fr OLD_MACHINE_LOLA/config/*.yml config/
+
+

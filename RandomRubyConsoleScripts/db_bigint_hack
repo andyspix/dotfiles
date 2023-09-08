@@ -1,0 +1,10 @@
+# On slave db
+STOP SLAVE;
+ALTER TABLE device_reports MODIFY COLUMN id BIGINT(8) NOT NULL AUTO_INCREMENT;
+ALTER TABLE warm_device_reports MODIFY COLUMN id BIGINT(8) NOT NULL AUTO_INCREMENT;
+INSERT INTO schema_migrations (version) VALUES (20210706221138);
+START SLAVE;
+
+# via Ansible
+- failover master to slave
+- create a new slave from this slave

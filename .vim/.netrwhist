@@ -1,3 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/home/aspix'
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/Users/andyspix/Git_Repository/machine_configuration/pws-ansible/roles/ruby-cron/files/etc/cron.d'
+let g:netrw_dirhist_1='/Users/andyspix/Git_Repository/lola/app/models'
+let g:netrw_dirhist_0='/Users/andyspix/Git_Repository/lola/lib'
+let g:netrw_dirhist_9='/Users/andyspix/Git_Repository/lola/app/api/lola'
+let g:netrw_dirhist_8='/Users/andyspix/Git_Repository/lola/app/views/support'
+let g:netrw_dirhist_7='/Users/andyspix/Git_Repository/lola/app/views/layouts/navbars'
+let g:netrw_dirhist_6='/Users/andyspix/Git_Repository/lola/app/assets/images/marketing_site/misc_images'
+let g:netrw_dirhist_5='/Users/andyspix/random_ruby_console_scripts'
+let g:netrw_dirhist_4='/Users/andyspix/Git_Repository/lola/test/api/netsuite'
+let g:netrw_dirhist_3='/Users/andyspix/Git_Repository/lola/NetSuite'
